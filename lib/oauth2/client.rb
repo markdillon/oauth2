@@ -135,6 +135,7 @@ module OAuth2
       else
         opts[:params] = params
       end
+      puts "#{options[:token_method}: #{token_url} :: #{opts.inspect}"
       response = request(options[:token_method], token_url, opts)
       error = Error.new(response)
       fail(error) if options[:raise_errors] && !(response.parsed.is_a?(Hash) && response.parsed['access_token'])
